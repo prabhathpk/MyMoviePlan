@@ -8,3 +8,4 @@ ADD MOVIE-TICKET/target/MOVIE-TICKET.jar MOVIE-TICKET.jar
 
 # Run the jar file 
 ENTRYPOINT ["java","-jar","MOVIE-TICKET.jar"]
+
