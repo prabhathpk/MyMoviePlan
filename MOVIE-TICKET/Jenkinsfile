@@ -1,0 +1,36 @@
+pipeline {
+    agent any
+    stages {
+        stage('git repo clone') {
+            steps {
+                git branch: 'main', url: 'https://github.com/prabhathpk/MyMoviePlan.git'
+            }
+        }
+        stage('clean') {
+            steps {
+                sh "mvn clean"
+ bat ' mvn -f MOVIE-TICKET/pom.xml clean install
+            }
+        }
+        stage('package') {
+            steps {
+                sh "mvn package"
+            }
+        }
+//         stage('docker compose') {
+//             steps {
+//                 sh "docker-compose up"
+//             }
+//         }
+//         stage('docker build') {
+//             steps {
+//                 sh "docker build -t MOVIE-TICKET ."
+//             }
+//         }
+        stage('docker run') {
+             steps {
+                 sh "docker run -p 8081:5555 --name mymovieplan --link mysqlmymovieplan1 -d my-mysqlmymovieplan1:1.0"
+             }
+        }
+    }
+}
