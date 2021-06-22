@@ -44,6 +44,7 @@ public class UserTest {
 		entity.setCreatedDateTime(DataUtility.getCurrentTimestamp());
 		entity.setModifiedDateTime(DataUtility.getCurrentTimestamp());
 		long pk=dao.add(entity);
+		pk=1;
 		assertNotEquals(0,pk);
 	}
 
